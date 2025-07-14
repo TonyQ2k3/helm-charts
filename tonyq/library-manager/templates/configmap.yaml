@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: libba-config
+data:
+  LIBBA_BACKEND_URL: http://libba-backend
+  LIBBA_DATABASE_URL: jdbc:mysql://mysql:3306/library

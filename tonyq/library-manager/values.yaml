@@ -1,0 +1,27 @@
+# Default values for library-manager.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+frontend:
+  image:
+    repository: tonyq2k3/libba-frontend
+    tag: 0.1.0
+  service:
+    port: 80
+
+backend:
+  image:
+    repository: tonyq2k3/libba-backend
+    tag: 0.1.0
+  service:
+    port: 80
+
+database:
+  image:
+    repository: mysql
+    tag: 8.4.5
+  service:
+    port: 3306
+  username: admin
+  password: password
+  database: library
