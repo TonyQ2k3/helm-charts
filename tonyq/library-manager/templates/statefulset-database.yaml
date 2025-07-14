@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: libba-mysql
 spec:
   selector:
     matchLabels:
-      app: mysql
+      app: libba-mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: mysql
+        app: libba-mysql
     spec:
       containers:
-        - name: mysql
+        - name: libba-mysql
           image: mysql:8.4.5
           ports:
             - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: password
+              value: {{ .Values.database.password }}
             - name: MYSQL_DATABASE
-              value: library
+              value: {{ .Values.database.database }}
             - name: MYSQL_USER
-              value: admin
+              value: {{ .Values.database.username }}
             - name: MYSQL_PASSWORD
-              value: password
+              value: {{ .Values.database.password }}
           volumeMounts:
             - name: mysql-data
               mountPath: /var/lib/mysql

@@ -18,8 +18,16 @@ spec:
         ports:
         - containerPort: 3000
         env:
+        - name: NEXT_PUBLIC_FRONTEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: libba-config
+              key: LIBBA_FRONTEND_URL
         - name: NEXT_PUBLIC_API_URL
-          value: "http://libba-backend:8080"
+          valueFrom:
+            configMapKeyRef:
+              name: libba-config
+              key: LIBBA_BACKEND_URL
       resources:
         requests:
           memory: "256Mi"

@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: libba-config
 data:
+  LIBBA_FRONTEND_URL: http://localhost:8080 # Check the `Origin` field to determine who's calling (otherwise CORS will block the communication)
   LIBBA_BACKEND_URL: http://libba-backend
-  LIBBA_DATABASE_URL: jdbc:mysql://mysql:3306/library
+  LIBBA_DATABASE_URL: jdbc:mysql://libba-mysql:{{ .Values.database.service.port }}/{{ .Values.database.database }}

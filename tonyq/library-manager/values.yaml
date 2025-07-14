@@ -12,7 +12,7 @@ frontend:
 backend:
   image:
     repository: tonyq2k3/libba-backend
-    tag: 0.1.0
+    tag: 0.1.1
   service:
     port: 80
 

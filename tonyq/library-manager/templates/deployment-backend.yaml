@@ -19,7 +19,10 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysql:3306/library"
+          valueFrom:
+            configMapKeyRef:
+              name: libba-config
+              key: LIBBA_DATABASE_URL
       resources:
         requests:
           memory: "256Mi"
