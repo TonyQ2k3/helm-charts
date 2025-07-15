@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: libba-mysql
+  name: {{ .Release.Name }}-mysql
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
-      app: libba-mysql
+      app: {{ .Release.Name }}-mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: libba-mysql
+        app: {{ .Release.Name }}-mysql
     spec:
       containers:
-        - name: libba-mysql
+        - name: {{ .Release.Name }}-mysql
           image: mysql:8.4.5
           ports:
             - containerPort: 3306

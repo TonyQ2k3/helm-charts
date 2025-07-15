@@ -2,5 +2,5 @@ apiVersion: v2
 name: library-manager
 description: Libba Books application chart
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "0.1.1"

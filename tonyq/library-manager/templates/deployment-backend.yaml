@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: libba-backend
+  name: {{ .Release.Name }}-backend
+  namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: libba-backend
+      app: {{ .Release.Name }}-backend
   template:
     metadata:
       labels:
-        app: libba-backend
+        app: {{ .Release.Name }}-backend
     spec:
       containers:
       - name: backend
@@ -21,7 +22,7 @@ spec:
         - name: SPRING_DATASOURCE_URL
           valueFrom:
             configMapKeyRef:
-              name: libba-config
+              name: {{ .Release.Name }}-config
               key: LIBBA_DATABASE_URL
       resources:
         requests:

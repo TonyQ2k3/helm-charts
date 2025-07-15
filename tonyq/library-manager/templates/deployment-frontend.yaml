@@ -1,33 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: libba-frontend
+  name: {{ .Release.Name }}-frontend
+  namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: libba-frontend
+      app: {{ .Release.Name }}-frontend
   template:
     metadata:
       labels:
-        app: libba-frontend
+        app: {{ .Release.Name }}-frontend
     spec:
       containers:
       - name: frontend
         image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
         ports:
         - containerPort: 3000
-        env:
-        - name: NEXT_PUBLIC_FRONTEND_URL
-          valueFrom:
-            configMapKeyRef:
-              name: libba-config
-              key: LIBBA_FRONTEND_URL
-        - name: NEXT_PUBLIC_API_URL
-          valueFrom:
-            configMapKeyRef:
-              name: libba-config
-              key: LIBBA_BACKEND_URL
       resources:
         requests:
           memory: "256Mi"
