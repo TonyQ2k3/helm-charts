@@ -5,9 +5,8 @@
 frontend:
   image:
     repository: tonyq2k3/libba-frontend
-    tag: 0.1.0
+    tag: 0.1.1
   service:
-    url: http://localhost:8080
     port: 80
 
 backend:
