@@ -5,4 +5,4 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   LIBBA_BACKEND_URL: http://{{ .Release.Name }}-backend
-  LIBBA_DATABASE_URL: jdbc:mysql://{{ .Release.Name }}-mysql:{{ .Values.database.service.port }}/{{ .Values.database.database }}
+  LIBBA_DATABASE_URL: jdbc:mysql://{{ .Values.database.service.url }}:{{ .Values.database.service.port }}/{{ .Values.database.database }}

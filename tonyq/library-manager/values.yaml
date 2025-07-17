@@ -17,10 +17,8 @@ backend:
     port: 80
 
 database:
-  image:
-    repository: mysql
-    tag: 8.4.5
   service:
+    url: example.com # Replace with your actual database URL
     port: 3306
   username: admin
   password: password
